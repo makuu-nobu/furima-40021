@@ -22,6 +22,9 @@ Things you may want to cover:
 |price    |integer   |null: false|
 |category |integer   |null: false|
 |situation|integer   |null: false|
+|charge   |integer   |null: false|
+|region   |integer   |null: false|
+|how_long |integer   |null: false| 
 |user     |references|null: false, foreign_key: true|
 
 ### Association
@@ -33,15 +36,14 @@ Things you may want to cover:
 
 |Column          |Type    |Options     |
 |----------------|--------|------------|
-|email           |string  |null: false |
+|email           |string  |null: false, unique: true|
 |nickname        |string  |null: false |
 |first_name      |string  |null: false |
 |last_name       |string  |null: false |
 |first_name_kana |string  |null: false |
 |last_name_kana  |string  |null: false |
-|birth_year      |integer |null: false |
-|birth_month     |integer |null:false  |
-|birth_day       |integer |null:false  |
+|password        |string  |null: false |
+|birth_day       |date |null:false  |
 
 ### Association
 - has_many :items
@@ -51,13 +53,20 @@ Things you may want to cover:
 
 |Column     |Type       |Options     |
 |---------|-----------|------------|
-|charge   |integer    |null: false |
-|region   |integer    |null: false |
-|how_long |integer    |null: false |
-|item     |references |foreign_key: true |
+|post_code  |string    |null: false |
+|prefecture  |integer    |null: false |
+|region_id |integer    |null: false |
+|manicipality|string |nulol: false|
+|address     |string |null: false |
+|add_address |string |            |
+|tell_address |integer |null: false|
+|user_id |references |null: false|
+|item_id |references |null: false|
 
 ### Association
 - belongs_to :item
+- belongs_to :user
+- has_one :purchase
 
 ## purchases テーブル
 
@@ -65,7 +74,6 @@ Things you may want to cover:
 |-----------|-----------|------------|
 |user       |references |foreign_key: true |
 |item       |references |foreign_key: true |
-|time_stamp |integer    |null: false |
 
 ### Association
 - belongs_to :user
