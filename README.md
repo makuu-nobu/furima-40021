@@ -17,21 +17,18 @@ Things you may want to cover:
 
 |Column   |Type      |Options    |
 |---------|----------|-----------|
-|image    |          |           |
-| name    |string    |null: false|
+|name    |string    |null: false|
 |content  |text      |null: false|
+|category_id |integer   |null: false|
+|situation_id|integer   |null: false|
+|charge_id |integer   |null: false|
+|region_id   |integer   |null: false|
+|how_long_id |integer   |null: false| 
 |price    |integer   |null: false|
-|category |integer   |null: false|
-|situation|integer   |null: false|
-|charge   |integer   |null: false|
-|region   |integer   |null: false|
-|how_long |integer   |null: false| 
 |user     |references|null: false, foreign_key: true|
-|ship     |references|null: false|   
 
 ### Association
 - belongs_to :user
-- belongs_to :ship
 - has_one :purchase
 
 ## users　テーブル
@@ -56,28 +53,26 @@ Things you may want to cover:
 |Column     |Type       |Options     |
 |---------|-----------|------------|
 |post_code  |string    |null: false |
-|prefecture_id  |integer    |null: false |
+|region_id  |integer    |null: false |
 |manicipality|string |nulol: false|
 |address     |string |null: false |
 |add_address |string |            |
-|tell_address |string |null: false|
+|tell_address |string |null: false , foreign_key: true|
 
 ### Association
-- belongs_to :item
-- belongs_to :user
-- has_one :purchase
+- belongs_to :purchase
 
 ## purchases テーブル
 
 |Column     |Type       |Options     |
-|-----------|-----------|------------|
-|user       |references |foreign_key: true |
-|item       |references |foreign_key: true |
+|----------|-----------|------------|
+|user      |references |null: false , foreign_key: true |
+|item      |references |null: false , foreign_key: true |
 
 ### Association
 - belongs_to :user
 - belongs_to :item
-- belongs_to :ships
+- has_one :ship
 
 
 * Database initialization
