@@ -54,7 +54,7 @@ Things you may want to cover:
 |---------|-----------|------------|
 |post_code  |string    |null: false |
 |region_id  |integer    |null: false |
-|manicipality|string |nulol: false|
+|manicipality|string |null: false|
 |address     |string |null: false |
 |add_address |string |            |
 |tell_address |string |null: false , foreign_key: true|
