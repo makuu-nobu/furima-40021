@@ -58,7 +58,7 @@ Things you may want to cover:
 |address     |string |null: false |
 |add_address |string |            |
 |tell_address |string |null: false , foreign_key: true|
-|purchase |integer |null: false , foreign_key: true|
+|purchase |references |null: false , foreign_key: true|
 
 ### Association
 - belongs_to :purchase
