@@ -6,9 +6,8 @@ FactoryBot.define do
       nickname { Faker::Name.unique.first_name }
       first_name { Faker::Name.first_name }
       last_name { Faker::Name.last_name }
-      first_name_kana { Faker::Japanese::Name.first_name }
-      last_name_kana { Faker::Japanese::Name.last_name }
-      encrypted_password { Devise::Encryptor.digest(User, 'password123') } # 仮のパスワード
-      birth_day { Faker::Date.birthday(min_age: 18, max_age: 65) }
+      first_name_kana { Faker::Japanese::Kana.first_name }
+      last_name_kana { Faker::Japanese::Kana.last_name }
+      birth_day { Faker::Date.birthday }
     end
   end
