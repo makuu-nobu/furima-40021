@@ -9,6 +9,13 @@ class Item < ApplicationRecord
     validates :how_long_id, numericality: { other_than: 1, message: "can't be blank" } 
     validates :price, presence: true
 
+    extend ActiveHash::Associations::ActiveRecordExtensions
+    belongs_to :genre
+    belongs_to :situation
+    belongs_to :charge
+    belongs_to :region
+    belongs_to :how_long
+    
     belongs_to :user
     has_one_attached :image
 end
