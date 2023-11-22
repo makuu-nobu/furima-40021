@@ -8,14 +8,12 @@ class Item < ApplicationRecord
     validates :charge_id, numericality: { other_than: 1, message: "can't be blank" } 
     validates :region_id, numericality: { other_than: 1, message: "can't be blank" } 
     validates :how_long_id, numericality: { other_than: 1, message: "can't be blank" } 
-    validates :price, presence: true,
-                    numericality: {
-                        only_integer: true,
-                        greater_than_or_equal_to: 300,
-                        less_than_or_equal_to: 9_999_999,
-                        message: 'は300から9,999,999の範囲で入力してください'
-                    }
-    validate :price_cannot_contain_full_width_digits
+    validates :price, presence: true,numericality: {only_integer: true, message: 'は半角数字で記入してください' }
+    validates :price, numericality: {
+        greater_than_or_equal_to: 300,
+        less_than_or_equal_to: 9_999_999,
+        message: 'は300から9,999,999の範囲で入力してください'
+    }
 
     extend ActiveHash::Associations::ActiveRecordExtensions
     belongs_to :category
@@ -26,11 +24,5 @@ class Item < ApplicationRecord
 
     belongs_to :user
     has_one_attached :image
-
-    private
-    def price_cannot_contain_full_width_digits
-        if price.present? && price.to_s =~/[０-９]/
-            errors.add(:price, 'は全角数字を含めることはできません')
-        end
-    end
+    
 end
