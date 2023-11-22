@@ -10,12 +10,12 @@ class Item < ApplicationRecord
     validates :price, presence: true
 
     extend ActiveHash::Associations::ActiveRecordExtensions
-    belongs_to :genre
+    belongs_to :category
     belongs_to :situation
     belongs_to :charge
     belongs_to :region
     belongs_to :how_long
-    
+
     belongs_to :user
     has_one_attached :image
 end
