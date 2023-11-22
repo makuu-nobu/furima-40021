@@ -14,7 +14,7 @@ class Item < ApplicationRecord
     belongs_to :situation
     belongs_to :charge
     belongs_to :region
-    belongs_to :how_long
+    belongs_to :howlong
 
     belongs_to :user
     has_one_attached :image

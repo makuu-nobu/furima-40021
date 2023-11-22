@@ -12,4 +12,6 @@ class User < ApplicationRecord
   validates :first_name_kana, presence: true, format: { with: VALID_NAME_KANA_REGIX, message: "は全角カタカナのみで入力してください" }
   validates :last_name_kana, presence: true, format: { with: VALID_NAME_KANA_REGIX, message: "は全角カタカナのみで入力してください" }
   validates :birth_day, presence: true
+
+  has_many :items
 end
