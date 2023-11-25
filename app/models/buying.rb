@@ -5,6 +5,7 @@ class Buying
 
     # ここにバリデーションの処理を書く
     with_options presence: true do
+        validates :token
         validates :post_code
         validates :region_id
         validates :manicipality
