@@ -1,4 +1,4 @@
-const pay = () =>{
+const pay = () => {
     const payjp = Payjp('pk_test_22a46355b945710db092e406')//　PAYJPテスト公開鍵後で環境変数にします
     const elements = payjp.elements();
     const numberElement = elements.create('cardNumber');
@@ -15,15 +15,16 @@ const pay = () =>{
             if (response.error) {
             } else {
                 const token = response.id;
-                const renderDom = document.getElementById("charge-form");
-                const tokenObj = `<input value=${token} name='token' type='hidden>`;
+                const renderDom = document.getElementById('charge-form');
+                const tokenObj = `<input value=${token} name='token' type='hidden'>`;
                 renderDom.insertAdjacentHTML("beforeend", tokenObj);
             }
             numberElement.clear();
             expiryElement.clear();
             cvcElement.clear();
-            document.getElementById("charge-form").submit();
-            });
+            
+            document.getElementById('charge-form').submit();
+        });
         e.preventDefault();
     });
 };
