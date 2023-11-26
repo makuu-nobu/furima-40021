@@ -9,13 +9,13 @@ class Buying
     with_options presence: true do
         validates :token
         validates :post_code, format: { with: POST_CODE_REGEX, message: "は無効な形式です" }
-        validates :region_id, numericality: {other_than: 1, message: "can't be blank" }
         validates :manicipality
         validates :address
-        validates :tell_address, format: { with: TELL_ADDRESS_REGEX, message: "は無効な電話番号です" }
+        validates :tell_address, format: { with: TELL_ADDRESS_REGEX, message: " is too short" }
         validates :item_id
         validates :user_id
     end
+    validates :region_id, numericality: {other_than: 1, message: "が未選択です" }
 
     def save
         # 各テーブルにデータを保存する処理を書く
