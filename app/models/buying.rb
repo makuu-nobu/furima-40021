@@ -11,7 +11,7 @@ class Buying
         validates :post_code, format: { with: POST_CODE_REGEX, message: "は無効な形式です" }
         validates :manicipality
         validates :address
-        validates :tell_address, format: { with: TELL_ADDRESS_REGEX, message: " is too short" }
+        validates :tell_address, format: { with: TELL_ADDRESS_REGEX, message: "は無効な形式です" }
         validates :item_id
         validates :user_id
     end
