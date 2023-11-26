@@ -15,6 +15,10 @@ class Item < ApplicationRecord
         message: 'は300から9,999,999の範囲で入力してください'
     }
 
+    belongs_to :user
+    has_one_attached :image
+    has_one :purchase
+    
     extend ActiveHash::Associations::ActiveRecordExtensions
     belongs_to :category
     belongs_to :situation
@@ -22,7 +26,5 @@ class Item < ApplicationRecord
     belongs_to :region
     belongs_to :howlong
 
-    belongs_to :user
-    has_one_attached :image
     
 end

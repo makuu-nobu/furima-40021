@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
     before_action :set_item, only: [:show, :edit, :update, :destroy]
     before_action :move_to_session, except: [:index, :show]
     def index
-        @items = Item.all.order("created_at DESC")        
+        @items = Item.includes(:user, :purchase).order("created_at DESC")     
     end
 
     def new
@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
     end
 
     def edit 
-        if current_user != @item.user
+        if current_user != @item.user || @item.purchase.present?
             redirect_to root_path
         end
     end
