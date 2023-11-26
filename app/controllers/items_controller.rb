@@ -20,9 +20,6 @@ class ItemsController < ApplicationController
     end
 
     def show
-        if user_signed_in? && @item.user.id == current_user.id && @item.purchase.present?
-            redirect_to root_path
-        end
     end
 
     def edit 
