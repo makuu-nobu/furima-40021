@@ -7,8 +7,5 @@ FactoryBot.define do
         address {'ホゲホゲ町1-2-3'}
         add_address {'無くても大丈夫ビル'}
         tell_address {'0120123123'}
-
-        association :user
-        association :item
     end
 end
