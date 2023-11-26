@@ -14,8 +14,8 @@ class Buying
         validates :tell_address, format: { with: TELL_ADDRESS_REGEX, message: "は無効な形式です" }
         validates :item_id
         validates :user_id
+        validates :region_id, numericality: {other_than: 1, message: "が未選択です" }
     end
-    validates :region_id, numericality: {other_than: 1, message: "が未選択です" }
 
     def save
         # 各テーブルにデータを保存する処理を書く
