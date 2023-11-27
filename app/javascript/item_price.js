@@ -1,29 +1,27 @@
-// app/javascript/items_new.js
-document.addEventListener('turbo:load', function() {
-    const priceInput = document.getElementById('item-price');
+const itemPrice = () => {
+    const itemPriceInput = document.getElementById('item-price');
     const addTaxPriceElement = document.getElementById('add-tax-price');
     const profitElement = document.getElementById('profit');
 
-function calculateValues() {
-    const price = parseFloat(priceInput.value);
+    // イベントリスナーを追加
+    const updatePrice = () => {
+    // item-priceの値を取得
+        const itemPrice = parseFloat(itemPriceInput.value);
 
-    if (!isNaN(price)) {
-    const taxPrice = price * 0.1;
-    addTaxPriceElement.textContent = taxPrice.toFixed();
+        // 値が数字であるかチェック
+        if (!isNaN(itemPrice)) {
+            // 販売手数料の計算（10%）
+            const taxPrice = itemPrice * 0.1;
+            addTaxPriceElement.textContent = taxPrice.toFixed();
+            // 販売利益の計算
+            const profit = itemPrice - taxPrice;
+            profitElement.textContent = profit.toFixed();
+                } else {
+            }
+    };
+    itemPriceInput.addEventListener('input', updatePrice);
+    itemPriceInput.addEventListener('render', updatePrice);
+};
 
-    const profit = price - taxPrice;
-    profitElement.textContent = profit.toFixed();
-    } else {
-    addTaxPriceElement.textContent = "";
-    profitElement.textContent = "";
-    }
-}
-
-// 初回の計算
-calculateValues();
-
-// 'item-price'の値が変更されたときのイベントリスナーを追加
-priceInput.addEventListener('input', function() {
-    calculateValues();
-});
-});
+window.addEventListener('turbo:load', itemPrice);
+window.addEventListener('turbo:render', itemPrice);
